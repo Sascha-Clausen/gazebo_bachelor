@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.5">
+  <world name="acceleration">
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    
+    <include>
+      <uri>model://bachelor_robot</uri>
+      <!-- the robot is placed approx. at the staging line -->
+      <pose>-0.5 0 0 0 0 0</pose>
+    </include>
+    
+    <population name="left_cones">
+      <model name="left_cone">
+        <include>
+          <static>false</static>
+          <uri>model://blue_cone</uri>
+        </include>
+      </model>
+      <pose>40 2.5 0 0 0 0</pose>
+      <box>
+        <size>70 0.01 0.01</size>
+      </box>
+      <model_count>14</model_count>
+      <distribution>
+        <type>linear-x</type>
+      </distribution>
+    </population>
+    
+    <population name="right_cones">
+      <model name="right_cone">
+        <include>
+          <static>false</static>
+          <uri>model://yellow_cone</uri>
+        </include>
+      </model>
+      <pose>40 -2.5 0 0 0 0</pose>
+      <box>
+        <size>70 0.01 0.01</size>
+      </box>
+      <model_count>14</model_count>
+      <distribution>
+        <type>linear-x</type>
+      </distribution>
+    </population>
+    
+    <population name="orange_stop_area_side_cones">
+      <model name="orange_side_cone">
+        <include>
+          <static>false</static>
+          <uri>model://orange_cone</uri>
+        </include>
+      </model>
+      <pose>127.5 0 0 0 0 0</pose>
+      <distribution>
+        <type>grid</type>
+        <rows>2</rows>
+        <cols>20</cols>
+        <step>5 5 0</step>
+      </distribution>
+    </population>
+    
+    <population name="orange_finish_line_cones">
+      <model name="orange_finish_line_cone">
+        <include>
+          <static>false</static>
+          <uri>model://orange_cone</uri>
+        </include>
+      </model>
+      <pose>175 0.5 0 0 0 0</pose>
+      <box>
+        <size>0.01 4 0.01</size>
+      </box>
+      <model_count>4</model_count>
+      <distribution>
+        <type>linear-y</type>
+      </distribution>
+    </population>
+    
+    <population name="orange_start_cones">
+      <model name="orange_start_cone">
+        <include>
+          <static>false</static>
+          <uri>model://large_orange_cone</uri>
+        </include>
+      </model>
+      <pose>0 0 0 0 0 0</pose>
+      <distribution>
+        <type>grid</type>
+        <rows>2</rows>
+        <cols>2</cols>
+        <step>0.6 5 0</step>
+      </distribution>
+    </population>
+    
+    <population name="orange_end_cones">
+      <model name="orange_end_cone">
+        <include>
+          <static>false</static>
+          <uri>model://large_orange_cone</uri>
+        </include>
+      </model>
+      <pose>75 0 0 0 0 0</pose>
+      <distribution>
+        <type>grid</type>
+        <rows>2</rows>
+        <cols>2</cols>
+        <step>0.6 5 0</step>
+      </distribution>
+    </population>
+    
+  </world>
+</sdf>

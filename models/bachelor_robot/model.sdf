@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <model name="pioneer2dx">
+      <include>
+        <uri>model://pioneer2dx</uri>
+      </include>
+
+      <include>
+        <uri>model://lidar</uri>
+        <pose>0.2 0 .26 0 0 0</pose>
+      </include>
+
+      <include>
+        <uri>model://custom_camera</uri>
+        <pose>0.2 0 .34 0 0 0</pose>
+        <!-- <pose>0.2 0 1 0 0 0</pose> --> <!-- positioniere die Kamera weiter oben -->
+      </include>
+
+      <joint name="camera_joint" type="revolute">
+        <parent>pioneer2dx::pioneer2dx::chassis</parent>
+        <child>pioneer2dx::custom_camera::link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="laser_joint" type="revolute">
+        <parent>pioneer2dx::pioneer2dx::chassis</parent>
+        <child>pioneer2dx::lidar::link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <plugin name="ExtrinsicCalibrationPlugin" filename="libExtrinsicCalibrationPlugin.so">
+        <filename>/home/sascha/gazebo_bachelor_wip/plugins/extrinsics.xml</filename>
+      </plugin>
+
+    </model>
+</sdf>
